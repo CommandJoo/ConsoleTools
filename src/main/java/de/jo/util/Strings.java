@@ -6,7 +6,7 @@ package de.jo.util;
  */
 public class Strings {
 
-    public String repeat(int r, String symbol) {
+    public static String repeat(int r, String symbol) {
         StringBuilder s = new StringBuilder();
         for(int i = 0; i < r; i++) {
             s.append(symbol);

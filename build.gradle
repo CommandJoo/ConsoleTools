@@ -1,17 +1,37 @@
+buildscript {
+    repositories {
+        gradlePluginPortal()
+    }
+    dependencies {
+        classpath("gradle.plugin.com.github.johnrengelman:shadow:7.1.2")
+    }
+}
+
 plugins {
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
     id 'java'
 }
 
 group 'de.jo'
-version '1.0-SNAPSHOT'
+version '1.0'
+
+// Output to build/libs/shadow.jar
+shadowJar {
+    archiveBaseName.set('ConsoleTools')
+    archiveClassifier.set('')
+    archiveVersion.set('')
+    manifest.attributes.put("Main-Class", "de.jo.Main")
+}
 
 repositories {
     mavenCentral()
 }
 
 dependencies {
+    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
+    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
+    
     implementation 'com.google.code.gson:gson:2.10.1'
-    // https://mvnrepository.com/artifact/net.sf.jopt-simple/jopt-simple
     implementation group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.7'
     implementation 'org.reflections:reflections:0.10.2'
 }

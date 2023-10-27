@@ -11,6 +11,7 @@ import de.jo.util.PackageScanner;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -35,7 +36,11 @@ public class ConsoleTools {
         OptionSet ops = options.build(args);
         ops.nonOptionArguments().forEach(arg -> {
             if(arg.toString().equals("help") || arg.toString().equals("h") || arg.toString().equals("?")) {
-                this.manager.module("help").run("");
+                try {
+                    this.manager.module("help").run("");
+                } catch (IOException | InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -55,6 +60,7 @@ public class ConsoleTools {
         for(String s : Files.sysLines("logo.txt")) {
             System.out.println(ConsoleColors.BLACK_BACKGROUND+ConsoleColors.BLUE_BOLD_BRIGHT+s);
         }
+        ConsoleColors.reset();
     }
 
 
@@ -66,7 +72,11 @@ public class ConsoleTools {
         String[] args = Arrays.copyOfRange(split, 1, split.length);
 
         if(module != null) {
-            module.run(args);
+            try {
+                module.run(args);
+            } catch(Exception ex) {
+                ex.printStackTrace();
+            }
         }else{
             System.out.println(ConsoleColors.RED_BRIGHT+"Module \""+mod+"\" not found!");
             ConsoleColors.reset();

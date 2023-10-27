@@ -1,0 +1,17 @@
+plugins {
+    id 'java'
+}
+
+group 'de.jo'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'com.google.code.gson:gson:2.10.1'
+    // https://mvnrepository.com/artifact/net.sf.jopt-simple/jopt-simple
+    implementation group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.7'
+    implementation 'org.reflections:reflections:0.10.2'
+}

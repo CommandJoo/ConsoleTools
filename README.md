@@ -4,7 +4,7 @@
 ConsoleTools is a CLI that has a collection of useful tools
 for various things in the console.
 
-# Usage
+# Installation
 TO BE ADDED
 
 
@@ -15,8 +15,8 @@ TO BE ADDED
 
 
 # Modules
-    - Cat - prints file contents
-    - UCat - prints url contents
-    - CLS - clears the screen
-    - Exit - exits the program
-    - Help - prints the helpscreen
+    Cat - prints file contents
+    UCat - prints url contents
+    CLS - clears the screen
+    Exit - exits the program
+    Help - prints the helpscreen

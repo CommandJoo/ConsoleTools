@@ -14,8 +14,9 @@ import joptsimple.OptionSpec;
 
 import java.io.IOException;
 import java.io.PrintStream;
-import java.util.Arrays;
-import java.util.Scanner;
+import java.util.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * @author Johannes Hans 27.10.2023
@@ -83,7 +84,8 @@ public class ConsoleTools {
 
 
     public void listen(String input) {
-        String[] split = input.split(" ");
+        String[] split = splitArgs(input);
+
         String mod = split[0];
         Module module = this.manager.module(mod);
         String[] args = Arrays.copyOfRange(split, 1, split.length);
@@ -100,12 +102,17 @@ public class ConsoleTools {
         }
     }
 
-
-
-
-
-
-
+    private String[] splitArgs(String input) {
+        List<String> list = new ArrayList<String>();
+        Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(input);
+        while (m.find())
+            list.add(m.group(1).replace("\"", ""));
+        String[] split = new String[list.size()];
+        for(int i = 0; i < list.size(); i++) {
+            split[i] = list.get(i);
+        }
+        return split;
+    }
 
 
     public static ConsoleTools instance() {

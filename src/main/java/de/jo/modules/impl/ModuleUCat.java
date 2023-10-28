@@ -17,11 +17,11 @@ import java.util.List;
  * @author Johannes Hans 27.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "ucat", description = "Prints the contents of a url to the console", syntax = "<URL>")
+@ModuleInfo(name = "ucat", description = "Prints the contents of a url to the console, and optionally writes it to a file", syntax = "<URL> <File(Optional)>")
 public class ModuleUCat implements Module {
     @Override
     public void run(String... args) throws IOException {
-        if(args.length > 0) {
+        if(args.length == 1) {
             String urls = args[0];
             URL url = new URL(urls);
             InputStream is = url.openStream();
@@ -41,6 +41,21 @@ public class ModuleUCat implements Module {
                 System.out.println(out);
             }
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
+        }else if(args.length == 2) {
+            if(args.length == 1) {
+                String urls = args[0];
+                URL url = new URL(urls);
+                InputStream is = url.openStream();
+                if(is == null) {
+                    Strings.error("URL: \""+urls+"\" not found");
+                    Strings.error(new StackTraceElement("ModuleUCat", "run", "ModuleUCat.java", 30).toString());
+                    return;
+                }
+                List<String> lines = Files.lines(is);
+                System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
+                Files.write(lines, args[1]);
+                System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
+            }
         }
     }
 }

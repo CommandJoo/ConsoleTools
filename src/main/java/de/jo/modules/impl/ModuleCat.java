@@ -13,7 +13,7 @@ import java.util.List;
  * @author Johannes Hans 27.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "cat", description = "Prints the contents of a file to the console", syntax = "<File>")
+@ModuleInfo(name = "cat", description = "Prints the contents of a file to the console", syntax = "<File> <Line(Optional)>")
 public class ModuleCat implements Module {
     @Override
     public void run(String... args) {
@@ -35,6 +35,22 @@ public class ModuleCat implements Module {
                 System.out.println(out);
             }
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
+        }else {
+            try {
+                String filename = args[0];
+                Integer line  = Integer.parseInt(args[1]);
+                if(!new File(filename).exists()) {
+                    Strings.error("File: \""+filename+"\" not found");
+                    Strings.error(new StackTraceElement("ModuleCat", "run", "ModuleCat.java", 24).toString());
+                    return;
+                }
+                List<String> lines = Files.lines(filename);
+                System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
+                System.out.println(ConsoleColors.YELLOW+lines.get(line));
+                System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
+            } catch(Exception ex) {
+             Strings.error("Invalid line number");
+            }
         }
     }
 }

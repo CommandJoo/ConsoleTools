@@ -8,10 +8,12 @@ import de.jo.options.Options;
 import de.jo.util.ConsoleColors;
 import de.jo.util.Files;
 import de.jo.util.PackageScanner;
+import de.jo.util.Strings;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 
 import java.io.IOException;
+import java.io.PrintStream;
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -31,7 +33,9 @@ public class ConsoleTools {
         this.options = new Options();
         this.manager = new ModuleManager();
 
+        Strings.clearScreen();
         this.logo();
+        this.consoleStyle();
 
         OptionSet ops = options.build(args);
         ops.nonOptionArguments().forEach(arg -> {
@@ -57,12 +61,25 @@ public class ConsoleTools {
 
 
     public void logo() {
+        System.out.println(ConsoleColors.BLACK_BACKGROUND+"                                                                                                                       "+ConsoleColors.RESET);
         for(String s : Files.sysLines("logo.txt")) {
-            System.out.println(ConsoleColors.BLACK_BACKGROUND+ConsoleColors.BLUE_BOLD_BRIGHT+s);
+            System.out.println(ConsoleColors.BLACK_BACKGROUND+ConsoleColors.BLUE_BOLD_BRIGHT+s+ConsoleColors.RESET);
         }
+        System.out.println(ConsoleColors.BLACK_BACKGROUND+"                                                                                                                       "+ConsoleColors.RESET);
         ConsoleColors.reset();
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
+
+    public void consoleStyle() {
+        PrintStream ps = new PrintStream(System.out) {
+            @Override
+            public void println(Object x) {
+                super.println(ConsoleColors.YELLOW+x);
+            }
+        };
+        System.setOut(ps);
+    }
 
 
     public void listen(String input) {

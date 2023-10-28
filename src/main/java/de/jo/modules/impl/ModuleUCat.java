@@ -7,24 +7,30 @@ import de.jo.util.Files;
 import de.jo.util.Strings;
 
 import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 /**
  * @author Johannes Hans 27.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "cat", description = "Prints the contents of a file to the console", syntax = "<File>")
-public class ModuleCat implements Module {
+@ModuleInfo(name = "ucat", description = "Prints the contents of a url to the console", syntax = "<URL>")
+public class ModuleUCat implements Module {
     @Override
-    public void run(String... args) {
+    public void run(String... args) throws IOException {
         if(args.length > 0) {
-            String filename = args[0];
-            if(!new File(filename).exists()) {
-                Strings.error("File: \""+filename+"\" not found");
-                Strings.error(new StackTraceElement("ModuleCat", "run", "ModuleCat.java", 24).toString());
+            String urls = args[0];
+            URL url = new URL(urls);
+            InputStream is = url.openStream();
+            if(is == null) {
+                Strings.error("URL: \""+urls+"\" not found");
+                Strings.error(new StackTraceElement("ModuleUCat", "run", "ModuleUCat.java", 30).toString());
                 return;
             }
-            List<String> lines = Files.lines(filename);
+            List<String> lines = Files.lines(is);
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
             for(int i = 0; i < lines.size(); i++) {
                 int spaces = (""+lines.size()).length()-(""+i).length()+1;

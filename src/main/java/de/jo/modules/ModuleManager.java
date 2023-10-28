@@ -4,6 +4,7 @@ import de.jo.modules.impl.ModuleTest;
 import de.jo.options.Option;
 import de.jo.options.Options;
 import de.jo.util.PackageScanner;
+import de.jo.util.Strings;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -32,6 +33,8 @@ public class ModuleManager {
                         Module mod = (Module) c.newInstance();
                         modules.add(mod);
                     } catch(Exception ex) {
+                        Strings.error("Couldn't create Module: "+c.getName());
+                        Strings.error(new StackTraceElement("ModuleManager", "loadModules", "ModuleManager.java", 37).toString());
                         System.err.println("Error found! Couldn't create Module: "+c.getName());
                     }
                 }

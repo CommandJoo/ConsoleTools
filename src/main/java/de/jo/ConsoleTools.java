@@ -95,12 +95,13 @@ public class ConsoleTools {
         String mod = split[0];
         Module module = this.manager.module(mod);
         String[] args = Arrays.copyOfRange(split, 1, split.length);
-
         if(module != null) {
             try {
-                if(args[0].equals("?") || args[0].equals("help")) {
-                    ModuleHelp.printModuleInfo(module);
-                    return;
+                if(args.length > 0) {
+                    if(args[0].equals("?") || args[0].equals("help")) {
+                        ModuleHelp.printModuleInfo(module);
+                        return;
+                    }
                 }
                 module.run(args);
             } catch(Exception ex) {

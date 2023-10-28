@@ -13,12 +13,12 @@ import java.util.List;
  * @author Johannes Hans 27.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "cat", description = "Prints the contents of a file to the console", syntax = "<File> <Line(Optional)>")
+@ModuleInfo(name = "cat", description = "Prints the contents of a file to the console", syntax = "($/)<File> <Line(Optional)>")
 public class ModuleCat implements Module {
     @Override
     public void run(String... args) {
         if(args.length == 1) {
-            String filename = args[0];
+            String filename = Files.parseFile(args[0]);
             if(!new File(filename).exists()) {
                 Strings.error("File: \""+filename+"\" not found");
                 Strings.error(new StackTraceElement("ModuleCat", "run", "ModuleCat.java", 24).toString());
@@ -37,7 +37,7 @@ public class ModuleCat implements Module {
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
         }else if(args.length > 1){
             try {
-                String filename = args[0];
+                String filename = Files.parseFile(args[0]);
                 Integer line  = Integer.parseInt(args[1]);
                 if(!new File(filename).exists()) {
                     Strings.error("File: \""+filename+"\" not found");

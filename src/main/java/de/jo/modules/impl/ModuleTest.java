@@ -16,6 +16,5 @@ public class ModuleTest implements Module {
 
     @Override
     public void run(String... args) throws IOException, InterruptedException {
-        System.out.println(Arrays.asList(args));
     }
 }

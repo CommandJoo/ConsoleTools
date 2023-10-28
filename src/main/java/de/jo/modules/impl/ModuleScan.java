@@ -14,12 +14,12 @@ import java.util.List;
  * @author Johannes Hans 28.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "scan", description = "Scans a file for a certain word", aliases = {"scn"}, syntax = "<File> <Term>")
+@ModuleInfo(name = "scan", description = "Scans a file for a certain word", aliases = {"scn"}, syntax = "($/)<File> <Term>")
 public class ModuleScan implements Module {
     @Override
     public void run(String... args) throws IOException, InterruptedException {
         if(args.length > 1){
-                String filename = args[0];
+                String filename = Files.parseFile(args[0]);
                 String searchterm = args[1];
                 if(!new File(filename).exists()) {
                     Strings.error("File: \""+filename+"\" not found");

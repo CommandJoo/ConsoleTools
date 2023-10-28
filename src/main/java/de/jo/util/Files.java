@@ -1,5 +1,7 @@
 package de.jo.util;
 
+import de.jo.ConsoleTools;
+
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
@@ -60,6 +62,11 @@ public class Files {
 
     public static boolean write(List<String> lines, String file) {
         return write(lines, new File(file));
+    }
+
+    public static String parseFile(String arg) {
+        arg = arg.replace("$", ConsoleTools.instance().currentDirectory.getAbsolutePath());
+        return arg;
     }
 
 }

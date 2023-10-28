@@ -12,6 +12,7 @@ import de.jo.util.Strings;
 import joptsimple.OptionSet;
 import joptsimple.OptionSpec;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
@@ -28,6 +29,8 @@ public class ConsoleTools {
     private final ModuleManager manager;
 
     private static ConsoleTools instance;
+
+    public File currentDirectory = new File(System.getProperty("user.dir"));
 
     public ConsoleTools(String[] args) {
         ConsoleTools.instance = this;
@@ -63,8 +66,10 @@ public class ConsoleTools {
 
     public void logo() {
         System.out.println(ConsoleColors.BLACK_BACKGROUND+"                                                                                                                       "+ConsoleColors.RESET);
+        boolean b = false;
         for(String s : Files.sysLines("logo.txt")) {
-            System.out.println(ConsoleColors.BLACK_BACKGROUND+ConsoleColors.BLUE_BOLD_BRIGHT+s+ConsoleColors.RESET);
+            System.out.println((b ? ConsoleColors.YELLOW : ConsoleColors.YELLOW_BRIGHT)+ConsoleColors.BLACK_BACKGROUND+s+ConsoleColors.RESET);
+            b = !b;
         }
         System.out.println(ConsoleColors.BLACK_BACKGROUND+"                                                                                                                       "+ConsoleColors.RESET);
         ConsoleColors.reset();

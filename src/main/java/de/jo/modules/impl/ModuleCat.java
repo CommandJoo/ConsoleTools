@@ -17,7 +17,7 @@ import java.util.List;
 public class ModuleCat implements Module {
     @Override
     public void run(String... args) {
-        if(args.length > 0) {
+        if(args.length == 1) {
             String filename = args[0];
             if(!new File(filename).exists()) {
                 Strings.error("File: \""+filename+"\" not found");
@@ -35,7 +35,7 @@ public class ModuleCat implements Module {
                 System.out.println(out);
             }
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
-        }else {
+        }else if(args.length > 1){
             try {
                 String filename = args[0];
                 Integer line  = Integer.parseInt(args[1]);

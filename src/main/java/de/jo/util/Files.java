@@ -44,7 +44,7 @@ public class Files {
     public static boolean write(List<String> lines, File file) {
         try {
             if(!file.exists()) {
-                file.mkdirs();
+                file.getParentFile().mkdirs();
                 file.createNewFile();
             }
             Writer writer = new BufferedWriter(new OutputStreamWriter(java.nio.file.Files.newOutputStream(file.toPath()), StandardCharsets.UTF_8));

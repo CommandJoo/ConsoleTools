@@ -6,10 +6,8 @@ import de.jo.util.ConsoleColors;
 import de.jo.util.Files;
 import de.jo.util.Strings;
 
-import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
 
@@ -42,7 +40,6 @@ public class ModuleUCat implements Module {
             }
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
         }else if(args.length == 2) {
-            if(args.length == 1) {
                 String urls = args[0];
                 URL url = new URL(urls);
                 InputStream is = url.openStream();
@@ -54,8 +51,8 @@ public class ModuleUCat implements Module {
                 List<String> lines = Files.lines(is);
                 System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
                 Files.write(lines, args[1]);
+                System.out.println(ConsoleColors.YELLOW+"Saved contents of URl to "+args[1]);
                 System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
-            }
         }
     }
 }

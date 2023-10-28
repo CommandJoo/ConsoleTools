@@ -1,4 +1,4 @@
-package de.jo.modules.impl;
+package de.jo.modules.impl.other;
 
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;

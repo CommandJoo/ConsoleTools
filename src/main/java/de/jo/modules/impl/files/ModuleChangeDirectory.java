@@ -1,4 +1,4 @@
-package de.jo.modules.impl;
+package de.jo.modules.impl.files;
 
 import de.jo.ConsoleTools;
 import de.jo.modules.Module;
@@ -13,7 +13,7 @@ import java.io.File;
  * @Project ConsoleTools
  */
 @ModuleInfo(name = "changedirectory", description = "Changes the current directory ($/) to another", aliases = {"changedir", "cd"}, syntax = "<Path>")
-public class ModuleCd implements Module {
+public class ModuleChangeDirectory implements Module {
     @Override
     public void run(String... args) throws Exception {
         if(args.length > 0) {

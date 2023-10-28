@@ -1,8 +1,5 @@
 package de.jo.modules;
 
-import de.jo.modules.impl.ModuleTest;
-import de.jo.options.Option;
-import de.jo.options.Options;
 import de.jo.util.PackageScanner;
 import de.jo.util.Strings;
 
@@ -19,6 +16,7 @@ public class ModuleManager {
     private List<Module> modules = new ArrayList<>();
 
     public ModuleManager() {
+
         loadModules("de.jo.modules.impl");
     }
 

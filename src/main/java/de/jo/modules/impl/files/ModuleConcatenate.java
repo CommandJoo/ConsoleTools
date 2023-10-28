@@ -1,4 +1,4 @@
-package de.jo.modules.impl;
+package de.jo.modules.impl.files;
 
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
@@ -13,8 +13,8 @@ import java.util.List;
  * @author Johannes Hans 27.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "cat", description = "Prints the contents of a file to the console", syntax = "($/)<File> <Line(Optional)>")
-public class ModuleCat implements Module {
+@ModuleInfo(name = "concatenate", description = "Prints the contents of a file to the console", aliases = "cat", syntax = "($/)<File> <Line(Optional)>")
+public class ModuleConcatenate implements Module {
     @Override
     public void run(String... args) {
         if(args.length == 1) {

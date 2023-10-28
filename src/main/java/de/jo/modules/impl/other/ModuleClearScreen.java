@@ -1,4 +1,4 @@
-package de.jo.modules.impl;
+package de.jo.modules.impl.other;
 
 import de.jo.ConsoleTools;
 import de.jo.modules.Module;
@@ -12,7 +12,7 @@ import java.io.IOException;
  * @Project ConsoleTools
  */
 @ModuleInfo(name = "clearscreen", description = "Clears the screen of all text", aliases = "cls")
-public class ModuleCls implements Module {
+public class ModuleClearScreen implements Module {
     @Override
     public void run(String... args) throws IOException, InterruptedException {
         for (int i = 0; i < 2; i++) {

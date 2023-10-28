@@ -1,4 +1,4 @@
-package de.jo.modules.impl;
+package de.jo.modules.impl.url;
 
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
@@ -15,8 +15,8 @@ import java.util.List;
  * @author Johannes Hans 27.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "ucat", description = "Prints the contents of a url to the console, and optionally writes it to a file", syntax = "<URL> <File(Optional)>")
-public class ModuleUCat implements Module {
+@ModuleInfo(name = "uconcatenate", description = "Prints the contents of a url to the console, and optionally writes it to a file", aliases = "ucat", syntax = "<URL> <File(Optional)>")
+public class ModuleURLConcatenate implements Module {
     @Override
     public void run(String... args) throws IOException {
         if(args.length == 1) {

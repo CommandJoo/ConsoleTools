@@ -3,6 +3,7 @@ package de.jo;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
 import de.jo.modules.ModuleManager;
+import de.jo.modules.impl.other.ModuleHelp;
 import de.jo.options.Option;
 import de.jo.options.Options;
 import de.jo.util.ConsoleColors;
@@ -97,6 +98,10 @@ public class ConsoleTools {
 
         if(module != null) {
             try {
+                if(args[0].equals("?") || args[0].equals("help")) {
+                    ModuleHelp.printModuleInfo(module);
+                    return;
+                }
                 module.run(args);
             } catch(Exception ex) {
                 ex.printStackTrace();

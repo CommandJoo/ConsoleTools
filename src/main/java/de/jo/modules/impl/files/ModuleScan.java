@@ -1,4 +1,4 @@
-package de.jo.modules.impl;
+package de.jo.modules.impl.files;
 
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
@@ -14,7 +14,7 @@ import java.util.List;
  * @author Johannes Hans 28.10.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "scan", description = "Scans a file for a certain word", aliases = {"scn"}, syntax = "($/)<File> <Term>")
+@ModuleInfo(name = "scan", description = "Scans a file for a certain word", aliases = {"scn", "find"}, syntax = "($/)<File> <Term>")
 public class ModuleScan implements Module {
     @Override
     public void run(String... args) throws IOException, InterruptedException {

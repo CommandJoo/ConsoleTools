@@ -43,7 +43,7 @@ public class ConsoleTools {
             if(arg.toString().equals("help") || arg.toString().equals("h") || arg.toString().equals("?")) {
                 try {
                     this.manager.module("help").run("");
-                } catch (IOException | InterruptedException e) {
+                } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
             }

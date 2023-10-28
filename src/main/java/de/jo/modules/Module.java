@@ -8,6 +8,6 @@ import java.io.IOException;
  */
 public interface Module {
 
-    public void run(String... args) throws IOException, InterruptedException;
+    public void run(String... args) throws Exception;
 
 }

@@ -20,3 +20,4 @@ TO BE ADDED
     CLS - clears the screen
     Exit - exits the program
     Help - prints the helpscreen
+    Scan - scans a file for a keyword

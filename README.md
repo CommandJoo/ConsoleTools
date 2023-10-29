@@ -17,7 +17,12 @@ TO BE ADDED
 # Modules
     Cat - prints file contents
     UCat - prints url contents
+    List - lists files in directory
+    CD - changes current directory
+    Help - prints the helpscreen
     CLS - clears the screen
     Exit - exits the program
-    Help - prints the helpscreen
     Scan - scans a file for a keyword
+    Json - prints beautified json
+    Fileshare - shares files to a server
+    Rename - renames a file

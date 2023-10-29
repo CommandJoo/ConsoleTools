@@ -1,0 +1,122 @@
+body {
+    background-color: #333333;
+    color: #FFFFFF;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-weight: lighter;
+    font-size: 1.5vw;
+}
+
+#center {
+    display: flex;
+    align-items: center;
+    width: 100vw;
+}
+
+h1 {
+    font-size: 4vw;
+    margin: auto;
+    margin-bottom: 10vh;
+    text-transform: uppercase;
+}
+
+#description {
+    background-color: #393939;
+    font-size: 2vw;
+}
+
+
+ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+    background-color: #393939;
+    list-style: none;
+    height: 10vh;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 50% 50%;
+}
+
+li:hover {
+    background-color: #3c3c3c;
+    list-style: none;
+    height: 10vh;
+    margin-top: 10px;
+    display: grid;
+    grid-template-columns: 75% 25%;
+    grid-template-rows: 50% 50%;
+}
+
+li .filename {
+    grid-column: span 1;
+    font-size: 2vw;
+    padding: 10px;
+    text-decoration: underline;
+    
+}
+
+li .filename:hover {
+    grid-column: span 1;
+    font-size: 2.2vw;
+    padding: 10px;
+    text-decoration: underline;
+    
+}
+
+li .filehash {
+    font-size: 2vh;
+    grid-column: span 1;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+li .filehash:hover {
+    grid-column: span 1;
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+li .filehash button {
+    font-size: 1.8vh;
+    border-style: none;
+    color: white;
+    background-color: #444444;
+}
+
+li .filehash button:hover {
+    font-size: 1.9vh;
+    border-style: none;
+    color: white;
+}
+
+
+
+li .filelink {
+    grid-column: span 1;
+    grid-row: span 2;
+    border-style: none;
+    background-color: #363636;
+    font-style: normal;
+    color: white;
+}
+li .filelink:hover {
+    grid-column: span 1;
+    grid-row: span 2;
+    border-style: none;
+    background-color: #333333;
+    font-style: normal;
+}
+li .filelink a {
+    color: white;
+    text-decoration: none;
+    font-size: 3vh;
+}
+li .filelink a:hover {
+    color: #CCCCFF;
+    text-decoration: none;
+    font-size: 3.2vh;
+}

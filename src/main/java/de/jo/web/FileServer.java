@@ -108,7 +108,7 @@ public class FileServer {
             }
         });
         server.start();
-        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Started server on port: "+port);
+        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Started server: "+Strings.publicIP()+", on port: "+port);
     }
 
     /**

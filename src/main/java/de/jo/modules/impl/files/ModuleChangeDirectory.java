@@ -16,7 +16,9 @@ import java.io.File;
 public class ModuleChangeDirectory implements Module {
     @Override
     public void run(String... args) throws Exception {
-        if(args.length > 0) {
+        if(args.length == 0) {
+            System.out.println(ConsoleColors.YELLOW_BRIGHT+"> "+ConsoleColors.YELLOW+ConsoleTools.instance().currentDirectory.getCanonicalFile());
+        } else {
             String fileName = args[0];
             //                                  D: --> absolut path
             File newDir = fileName.charAt(1) == ':' ? new File(fileName) : new File(ConsoleTools.instance().currentDirectory, fileName);

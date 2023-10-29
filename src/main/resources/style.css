@@ -19,6 +19,10 @@ h1 {
     text-transform: uppercase;
 }
 
+p {
+   font-size: 1.5vh;
+}
+
 #description {
     background-color: #393939;
     font-size: 2vw;

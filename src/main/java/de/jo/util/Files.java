@@ -80,4 +80,18 @@ public class Files {
         return true;
     }
 
+    public static String sizeShortened(int sizeInBytes) {
+        if(sizeInBytes < 1000) {
+            return (sizeInBytes)+"b";
+        }
+        if(sizeInBytes < 1000000) {
+            return (sizeInBytes/1000F)+"Kb";
+        }
+        if(sizeInBytes < 1000000000) {
+            return (sizeInBytes/1000000F)+"Mb";
+        }else{
+            return (sizeInBytes/1000000000F)+"Gb";
+        }
+    }
+
 }

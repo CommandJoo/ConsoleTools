@@ -1,7 +1,3 @@
-# TODOOOOOO add joke comamnd https://sv443.net/jokeapi/v2/
-
-
-
 # ConsoleTools
 ###### by Command Jo
 <br><br>
@@ -30,3 +26,4 @@ TO BE ADDED
     Json - prints beautified json
     Fileshare - shares files to a server
     Rename - renames a file
+    Joke - prints a joke

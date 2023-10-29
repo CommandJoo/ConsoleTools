@@ -68,7 +68,7 @@ public class FileServer {
      **/
     private static final String FILE_TEMPLATE = "<li>\n" +
             "                <div class=\"filename\">%FILE_NAME%</div>\n" +
-            "                <button class=\"filelink\"><a href=\"%FILE_NAME%\">Download</a></button>\n" +
+            "                <button class=\"filelink\"><a href=\"%FILE_NAME%\">Download<br><p>Size: %FILE_SIZE%</p></a></button>\n" +
             "                <div class=\"filehash\">sha256: <button>%FILE_HASH%</button></div>\n" +
             "            </li>";
 
@@ -98,7 +98,7 @@ public class FileServer {
                 for(File file : files) {
                     addFileEntry(file);
                     String hash = Strings.sha256(Strings.lines(de.jo.util.Files.lines(file)));
-                    filesList.append(FILE_TEMPLATE.replace("%FILE_NAME%", file.getName()).replace("%FILE_HASH%", hash)).append("<br>");
+                    filesList.append(FILE_TEMPLATE.replace("%FILE_NAME%", file.getName()).replace("%FILE_SIZE%", ""+ de.jo.util.Files.sizeShortened((int) file.length())).replace("%FILE_HASH%", hash)).append("<br>");
                 }
                 html = html.replace("%FILES%", filesList);
 

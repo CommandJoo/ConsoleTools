@@ -29,10 +29,10 @@ public class ModuleList implements Module {
                 if(s.length() > longestLength) longestLength=s.length();
             }
 
-            System.out.println(ConsoleColors.YELLOW_BRIGHT+"L___ "+ConsoleColors.YELLOW+dir.getCanonicalPath()+Strings.repeat((longestLength-dir.getCanonicalPath().length())+5, " ")+ConsoleColors.YELLOW_BRIGHT+"   | "+ConsoleColors.RED_BRIGHT+sizeShortened(size(dir)));
+            System.out.println(ConsoleColors.YELLOW_BRIGHT+"L___ "+ConsoleColors.YELLOW+dir.getCanonicalPath()+Strings.repeat((longestLength-dir.getCanonicalPath().length())+5, " ")+ConsoleColors.YELLOW_BRIGHT+"   | "+ConsoleColors.RED_BRIGHT+Files.sizeShortened(size(dir)));
 
             for(File file : Objects.requireNonNull(dir.listFiles())) {
-                String filesize = sizeShortened((int) file.length());
+                String filesize = Files.sizeShortened((int) file.length());
                 int spaces = longestLength-file.getName().length()+5;
                 System.out.println(ConsoleColors.YELLOW_BRIGHT+"   L___ "+ConsoleColors.YELLOW+file.getName()+Strings.repeat(spaces, " ")+ConsoleColors.YELLOW_BRIGHT+"| "+ConsoleColors.RED_BRIGHT+filesize);
             }
@@ -47,20 +47,6 @@ public class ModuleList implements Module {
             size+=file.length();
         }
         return size;
-    }
-
-    public String sizeShortened(int sizeInBytes) {
-        if(sizeInBytes < 1000) {
-            return (sizeInBytes)+"b";
-        }
-        if(sizeInBytes < 1000000) {
-            return (sizeInBytes/1000F)+"Kb";
-        }
-        if(sizeInBytes < 1000000000) {
-            return (sizeInBytes/1000000F)+"Mb";
-        }else{
-            return (sizeInBytes/1000000000F)+"Gb";
-        }
     }
 
 }

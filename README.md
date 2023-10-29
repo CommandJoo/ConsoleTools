@@ -1,3 +1,7 @@
+# TODOOOOOO add joke comamnd https://sv443.net/jokeapi/v2/
+
+
+
 # ConsoleTools
 ###### by Command Jo
 <br><br>

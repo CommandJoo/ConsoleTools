@@ -12,10 +12,11 @@
 |             \  \_______\                     \ \__\    \ \_______\   \ \_______\   \ \_______\   |\_________\       |
 |              \|________|                      \|__|     \|_______|    \|_______|    \|_______|   \|_________|       |
 |                                                                                                                     |
-|                                  ConsoleTools   by   Johannes   Hans   @CommandJoo                                  |
-|                                                   Version 1.0.5                                                     |
+|                                                                                                                     |
+|                                   ConsoleTools    by    Johannes Hans    @CommandJoo                                |
+|                                                Version 1.0.5 - 29.10.23                                             |
 |                                       https://github.com/CommandJoo/ConsoleTools                                    |
-|                                          to   get   started   type   "?"                                            |
+|                                            to   get   started   type   "?"                                          |
 |                                                                                                                     |
 |                                                                                                                     |
 |---------------------------------------------------------------------------------------------------------------------|

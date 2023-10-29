@@ -4,6 +4,8 @@
 ConsoleTools is a CLI that has a collection of useful tools
 for various things in the console.
 
+![](https://i.imgur.com/4lVjrRF.png)
+
 # Installation
 TO BE ADDED
 

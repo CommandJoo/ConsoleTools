@@ -62,15 +62,13 @@ public class ConsoleTools {
 
 
     public void logo() {
-        System.out.println(ConsoleColors.BLACK_BACKGROUND+"                                                                                                                       "+ConsoleColors.RESET);
         boolean b = false;
         for(String s : Files.sysLines("logo.txt")) {
             System.out.println((b ? ConsoleColors.YELLOW : ConsoleColors.YELLOW_BRIGHT)+ConsoleColors.BLACK_BACKGROUND+s+ConsoleColors.RESET);
             b = !b;
         }
-        System.out.println(ConsoleColors.BLACK_BACKGROUND+"                                                                                                                       "+ConsoleColors.RESET);
         ConsoleColors.reset();
-        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n");
+        System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
 

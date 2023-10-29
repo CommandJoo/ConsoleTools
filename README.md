@@ -1,6 +1,6 @@
 # ConsoleTools
 ###### by Command Jo
-<br><br>
+
 ConsoleTools is a CLI that has a collection of useful tools
 for various things in the console.
 
@@ -10,8 +10,14 @@ TO BE ADDED
 
 # Functionality
 1. Launch the app
-2. It will tell you that ```to get started type "?"```
-3. This will show you all the information you need to work
+```bash
+java -jar ConsoleTools.jar
+```
+2. It will then tell you that
+```text
+to get started type "?"
+```
+3. Doing this will show you the Helpscreen
 
 
 # Modules

@@ -56,7 +56,9 @@ public class FileServer {
      * @param file The parameter "file" is of type File and represents the directory that you want to add to the server.
      */
     public void addDirectory(File file) {
-        this.files.addAll(Arrays.asList(Objects.requireNonNull(file.listFiles())));
+        for(File subfile : Objects.requireNonNull(file.listFiles())) {
+            if(!subfile.isDirectory()) this.files.add(subfile);
+        }
         System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Added Directory to Server: "+file.getName());
         System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");

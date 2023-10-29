@@ -29,13 +29,12 @@ repositories {
 }
 
 dependencies {
-    implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
-    implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
-    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
-    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+    implementation 'org.slf4j:slf4j-api:2.0.5'
+    implementation 'org.slf4j:slf4j-log4j12:2.0.5'
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.15.1'
 
     implementation 'com.google.code.gson:gson:2.10.1'
-    implementation group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.7'
+    implementation 'net.sf.jopt-simple:jopt-simple:5.0.4'
     implementation 'org.reflections:reflections:0.10.2'
 
     implementation 'com.google.guava:guava:31.1-jre'

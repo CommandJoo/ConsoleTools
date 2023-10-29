@@ -13,6 +13,7 @@ import java.io.IOException;
 public class CustomPrettyPrinter extends DefaultPrettyPrinter {
 
     public CustomPrettyPrinter() {
+        super();
     }
 
     @Override
@@ -69,5 +70,10 @@ public class CustomPrettyPrinter extends DefaultPrettyPrinter {
         jg.writeRaw(ConsoleColors.YELLOW_BRIGHT);
         super.writeEndArray(jg, nrOfValues);
         jg.writeRaw(ConsoleColors.RESET);
+    }
+
+    @Override
+    public DefaultPrettyPrinter createInstance() {
+        return new CustomPrettyPrinter();
     }
 }

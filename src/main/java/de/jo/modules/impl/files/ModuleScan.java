@@ -23,7 +23,7 @@ public class ModuleScan implements Module {
                 String searchterm = args[1];
                 if(!new File(filename).exists()) {
                     Strings.error("File: \""+filename+"\" not found");
-                    Strings.error(new StackTraceElement("ModuleCat", "run", "ModuleCat.java", 24).toString());
+                    Strings.moduleError(this, 26);
                     return;
                 }
                 List<String> lines = Files.lines(filename);

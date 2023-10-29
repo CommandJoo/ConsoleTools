@@ -1,20 +1,16 @@
 package de.jo;
 
 import de.jo.modules.Module;
-import de.jo.modules.ModuleInfo;
 import de.jo.modules.ModuleManager;
 import de.jo.modules.impl.other.ModuleHelp;
-import de.jo.options.Option;
 import de.jo.options.Options;
 import de.jo.util.ConsoleColors;
 import de.jo.util.Files;
-import de.jo.util.PackageScanner;
 import de.jo.util.Strings;
+import de.jo.web.FileServer;
 import joptsimple.OptionSet;
-import joptsimple.OptionSpec;
 
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.regex.Matcher;
@@ -33,7 +29,7 @@ public class ConsoleTools {
 
     public File currentDirectory = new File(System.getProperty("user.dir"));
 
-    public ConsoleTools(String[] args) {
+    public ConsoleTools(String[] args) throws Exception{
         ConsoleTools.instance = this;
         this.options = new Options();
         this.manager = new ModuleManager();

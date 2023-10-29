@@ -10,6 +10,7 @@ import joptsimple.OptionParser;
 import joptsimple.OptionSet;
 import org.apache.log4j.BasicConfigurator;
 
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.Arrays;
 
@@ -19,7 +20,7 @@ import java.util.Arrays;
  */
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         BasicConfigurator.configure();
         new ConsoleTools(args);
     }

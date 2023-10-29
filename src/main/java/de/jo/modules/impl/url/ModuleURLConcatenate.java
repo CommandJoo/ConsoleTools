@@ -25,7 +25,7 @@ public class ModuleURLConcatenate implements Module {
             InputStream is = url.openStream();
             if(is == null) {
                 Strings.error("URL: \""+urls+"\" not found");
-                Strings.error(new StackTraceElement("ModuleUCat", "run", "ModuleUCat.java", 30).toString());
+                Strings.moduleError(this, 28);
                 return;
             }
             List<String> lines = Files.lines(is);
@@ -45,7 +45,7 @@ public class ModuleURLConcatenate implements Module {
                 InputStream is = url.openStream();
                 if(is == null) {
                     Strings.error("URL: \""+urls+"\" not found");
-                    Strings.error(new StackTraceElement("ModuleUCat", "run", "ModuleUCat.java", 30).toString());
+                    Strings.moduleError(this, 48);
                     return;
                 }
                 List<String> lines = Files.lines(is);

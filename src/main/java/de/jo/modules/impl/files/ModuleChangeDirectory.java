@@ -18,16 +18,19 @@ public class ModuleChangeDirectory implements Module {
     public void run(String... args) throws Exception {
         if(args.length == 0) {
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"> "+ConsoleColors.YELLOW+ConsoleTools.instance().currentDirectory.getCanonicalFile());
-        } else {
+        } else if(args.length == 1){
             String fileName = args[0];
             //                                  D: --> absolut path
             File newDir = fileName.charAt(1) == ':' ? new File(fileName) : new File(ConsoleTools.instance().currentDirectory, fileName);
             if(!newDir.exists() || !newDir.isDirectory()) {
                 Strings.error("Invalid destination: "+newDir.getCanonicalFile());
+                Strings.moduleError(this, 27);
                 return;
             }
             ConsoleTools.instance().currentDirectory = newDir.getCanonicalFile();
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"> "+ConsoleColors.YELLOW+newDir.getCanonicalFile());
+        }else {
+            Strings.error("Invalid usage");
         }
     }
 }

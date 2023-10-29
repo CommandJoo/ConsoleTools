@@ -15,9 +15,13 @@ import java.io.IOException;
 public class ModuleClearScreen implements Module {
     @Override
     public void run(String... args) throws IOException, InterruptedException {
-        for (int i = 0; i < 2; i++) {
-            Strings.clearScreen();
+        if(args.length == 0) {
+            for (int i = 0; i < 2; i++) {
+                Strings.clearScreen();
+            }
+            ConsoleTools.instance().logo();
+        }else {
+            Strings.error("Invalid usage");
         }
-        ConsoleTools.instance().logo();
     }
 }

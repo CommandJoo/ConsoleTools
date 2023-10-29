@@ -21,6 +21,7 @@ public class ModuleList implements Module {
             File dir = new File(Files.parseFile(args[0]));
             if(!dir.exists() || !dir.isDirectory()) {
                 Strings.error("File needs to be a directory");
+                Strings.moduleError(this, 24);
                 return;
             }
             int longestLength = dir.getCanonicalPath().length();
@@ -35,6 +36,8 @@ public class ModuleList implements Module {
                 int spaces = longestLength-file.getName().length()+5;
                 System.out.println(ConsoleColors.YELLOW_BRIGHT+"   L___ "+ConsoleColors.YELLOW+file.getName()+Strings.repeat(spaces, " ")+ConsoleColors.YELLOW_BRIGHT+"| "+ConsoleColors.RED_BRIGHT+filesize);
             }
+        }else {
+            Strings.error("Invalid usage");
         }
     }
 

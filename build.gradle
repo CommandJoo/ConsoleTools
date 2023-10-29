@@ -25,13 +25,18 @@ shadowJar {
 
 repositories {
     mavenCentral()
+    maven { url 'https://jitpack.io' }
 }
 
 dependencies {
     implementation group: 'org.slf4j', name: 'slf4j-api', version: '1.7.25'
     implementation group: 'org.slf4j', name: 'slf4j-log4j12', version: '1.7.25'
-    
+    // https://mvnrepository.com/artifact/com.fasterxml.jackson.core/jackson-databind
+    implementation group: 'com.fasterxml.jackson.core', name: 'jackson-databind', version: '2.0.1'
+
     implementation 'com.google.code.gson:gson:2.10.1'
     implementation group: 'net.sf.jopt-simple', name: 'jopt-simple', version: '4.7'
     implementation 'org.reflections:reflections:0.10.2'
+
+    implementation 'com.google.guava:guava:31.1-jre'
 }

@@ -21,7 +21,7 @@ public class ModuleConcatenate implements Module {
             String filename = Files.parseFile(args[0]);
             if(!new File(filename).exists()) {
                 Strings.error("File: \""+filename+"\" not found");
-                Strings.error(new StackTraceElement("ModuleCat", "run", "ModuleCat.java", 24).toString());
+                Strings.moduleError(this, 24);
                 return;
             }
             List<String> lines = Files.lines(filename);
@@ -35,13 +35,13 @@ public class ModuleConcatenate implements Module {
                 System.out.println(out);
             }
             System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
-        }else if(args.length > 1){
+        }else if(args.length == 2){
             try {
                 String filename = Files.parseFile(args[0]);
                 Integer line  = Integer.parseInt(args[1]);
                 if(!new File(filename).exists()) {
                     Strings.error("File: \""+filename+"\" not found");
-                    Strings.error(new StackTraceElement("ModuleCat", "run", "ModuleCat.java", 24).toString());
+                    Strings.moduleError(this, 44);
                     return;
                 }
                 List<String> lines = Files.lines(filename);
@@ -50,7 +50,10 @@ public class ModuleConcatenate implements Module {
                 System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
             } catch(Exception ex) {
              Strings.error("Invalid line number");
+                Strings.moduleError(this, 53);
             }
+        }else {
+            Strings.error("Invalid usage");
         }
     }
 }

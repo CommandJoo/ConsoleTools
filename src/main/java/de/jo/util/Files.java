@@ -29,6 +29,9 @@ public class Files {
         } catch(Exception ex) {}
         return lines;
     }
+    public static List<String> lines(File file) {
+        return lines(file.getAbsolutePath());
+    }
     public static List<String> lines(String file) {
         File f = new File(file);
         if(!f.exists()) return new ArrayList<>();
@@ -59,7 +62,6 @@ public class Files {
         }
         return false;
     }
-
     public static boolean write(List<String> lines, String file) {
         return write(lines, new File(file));
     }
@@ -67,6 +69,15 @@ public class Files {
     public static String parseFile(String arg) {
         arg = arg.replace("$", ConsoleTools.instance().currentDirectory.getAbsolutePath());
         return arg;
+    }
+
+    public static boolean isValidFileName(String name) {
+        final Character[] INVALID_WINDOWS_SPECIFIC_CHARS = {'"', '*', '<', '>', '?', '|'};
+
+        for(Character charr : INVALID_WINDOWS_SPECIFIC_CHARS) {
+            if(name.contains(""+charr)) return false;
+        }
+        return true;
     }
 
 }

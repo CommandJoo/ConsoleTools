@@ -42,4 +42,30 @@ public class ModuleHelp implements Module {
             System.out.println(ConsoleColors.YELLOW_BOLD_BRIGHT + syntax);
         }
     }
+
+    public static String moduleInfo(Module module) {
+        ModuleInfo info = ConsoleTools.instance().manager().moduleInfo(module);
+
+        String out = "";
+
+        out = ConsoleColors.YELLOW_BOLD_BRIGHT + info.name() + ConsoleColors.YELLOW + " - " + info.description() + "\n";
+        //print aliases
+        if (info.aliases().length > 0) {
+            StringBuilder aliases = new StringBuilder(ConsoleColors.YELLOW_BOLD_BRIGHT + "     aliases: " + ConsoleColors.YELLOW);
+            for (int i = 0; i < info.aliases().length; i++) {
+                if (i > 0) {
+                    aliases.append(", ").append("\"").append(info.aliases()[i]).append("\"");
+                } else {
+                    aliases.append("\"").append(info.aliases()[i]).append("\"");
+                }
+            }
+            out += ConsoleColors.YELLOW_BOLD_BRIGHT + aliases + "\n";
+        }
+        //print syntax
+        if (!info.syntax().isEmpty()) {
+            StringBuilder syntax = new StringBuilder(ConsoleColors.YELLOW_BOLD_BRIGHT + "     usage: " + info.name() + " " + info.syntax() + ConsoleColors.YELLOW);
+           out += ConsoleColors.YELLOW_BOLD_BRIGHT + syntax + "\n";
+        }
+        return out;
+    }
 }

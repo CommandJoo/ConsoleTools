@@ -13,6 +13,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -186,6 +188,11 @@ public class Strings {
 
         return sb.toString();
     }
+
+    public static List<String> lines(String lines) {
+        return Arrays.asList(lines.split("\n"));
+    }
+
     public static String json(String json) throws IOException {
         ObjectMapper objectMapper = new ObjectMapper();
         Object jsonObject = objectMapper.readValue(json, Object.class);

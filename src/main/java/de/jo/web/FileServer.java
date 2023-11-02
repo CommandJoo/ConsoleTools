@@ -89,7 +89,7 @@ public class FileServer {
                 ex.getResponseBody().close();
             }
         });
-        server.createContext("/index.html", new HttpHandler() {
+        server.createContext("/", new HttpHandler() {
             @Override
             public void handle(HttpExchange ex) throws IOException {
                 String html = Strings.lines(de.jo.util.Files.sysLines("fileserver.html"));

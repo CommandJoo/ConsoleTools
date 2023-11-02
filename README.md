@@ -35,3 +35,4 @@ to get started type "?"
     Fileshare - shares files to a server
     Rename - renames a file
     Joke - prints a joke
+    Summarize - prints wiki summary

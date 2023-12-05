@@ -36,3 +36,4 @@ to get started type "?"
     Rename - renames a file
     Joke - prints a joke
     Summarize - prints wiki summary
+    Math - use math expressions

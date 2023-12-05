@@ -1,18 +1,8 @@
 package de.jo;
 
-import de.jo.modules.ModuleInfo;
-import de.jo.options.Option;
-import de.jo.options.Options;
-import de.jo.util.ConsoleColors;
-import de.jo.util.PackageScanner;
-import de.jo.util.Strings;
-import joptsimple.OptionParser;
-import joptsimple.OptionSet;
 import org.apache.log4j.BasicConfigurator;
-
-import java.io.IOException;
-import java.io.PrintStream;
-import java.util.Arrays;
+import org.mariuszgromada.math.mxparser.License;
+import org.mariuszgromada.math.mxparser.Tutorial;
 
 /**
  * @author Johannes Hans 27.10.2023
@@ -21,7 +11,9 @@ import java.util.Arrays;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+
         BasicConfigurator.configure();
+        License.iConfirmNonCommercialUse("Johannes Hans");
         new ConsoleTools(args);
     }
 

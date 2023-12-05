@@ -40,4 +40,7 @@ dependencies {
     implementation 'org.jsoup:jsoup:1.16.2'
     implementation fileTree(dir: 'libraries', include: '*.jar')
     implementation fileTree(dir: 'libraries', include: '*.dll')
+
+
+    implementation 'org.mariuszgromada.math:MathParser.org-mXparser:5.2.1'
 }

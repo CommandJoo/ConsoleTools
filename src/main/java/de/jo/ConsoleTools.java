@@ -63,7 +63,7 @@ public class ConsoleTools {
 
     public void logo() {
         boolean b = false;
-        for(String s : Files.sysLines("logo2.txt")) {
+        for(String s : Files.sysLines("logo.txt")) {
             System.out.println((b ? ConsoleColors.YELLOW : ConsoleColors.YELLOW_BRIGHT)+ConsoleColors.BLACK_BACKGROUND+s+ConsoleColors.RESET);
             b = !b;
         }

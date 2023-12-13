@@ -1,19 +1,14 @@
 package de.jo.modules.impl.other;
 
-import de.jo.Main;
 import de.jo.math.Math;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
 import de.jo.util.ConsoleColors;
 import de.jo.util.Strings;
-import org.mariuszgromada.math.mxparser.Constant;
-import org.mariuszgromada.math.mxparser.Expression;
-import org.mariuszgromada.math.mxparser.Function;
-import org.mariuszgromada.math.mxparser.mXparser;
+import org.mariuszgromada.math.mxparser.*;
 
 import java.awt.*;
 import java.awt.datatransfer.StringSelection;
-import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -45,6 +40,9 @@ public class ModuleMath implements Module {
             Scanner scanner = new Scanner(System.in);
             String line = "";
             while((line = scanner.nextLine()) != null) {
+                if(line.isEmpty()) {
+                    System.out.println();
+                }
                 if(line.toLowerCase().startsWith(":f")) {
                     Function function = new Function(line.substring(2));
                     math.functions().values().forEach(f -> {
@@ -103,6 +101,7 @@ public class ModuleMath implements Module {
                     math.constants().values().forEach(expression::addDefinitions);
                     expression.enableImpliedMultiplicationMode();
                     if(isVerbose) expression.setVerboseMode();
+
                     Object obj = expression.calculate();
                     copy(obj.toString());
                     System.out.println(ConsoleColors.GREEN+"> "+obj.toString());

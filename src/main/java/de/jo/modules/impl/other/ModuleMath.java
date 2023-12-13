@@ -11,6 +11,8 @@ import org.mariuszgromada.math.mxparser.Expression;
 import org.mariuszgromada.math.mxparser.Function;
 import org.mariuszgromada.math.mxparser.mXparser;
 
+import java.awt.*;
+import java.awt.datatransfer.StringSelection;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -26,12 +28,12 @@ public class ModuleMath implements Module {
     @Override
     public void run(String... args) throws Exception {
         this.math = new Math();
-        boolean isMath = true;
-        boolean verbose = false;
+        boolean isMath = true, isVerbose = false, isCopy = false;
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"You're now in Math-Mode!");
         System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":f Function\" to write math.functions()");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":d Function\" to write get a quick derivative function named functionname+\"d\"");
+        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":s\" to save the result to clipboard automatically");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":c Const\" to write math.constants()");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":e Expression\" to evaluate expressions");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":v\" to enable/disable calculating documentation");
@@ -83,6 +85,10 @@ public class ModuleMath implements Module {
                         System.out.println(ConsoleColors.GREEN+"> "+derivative.getFunctionName()+": "+derivative.getFunctionExpressionString());
                     }
                 }
+                else if(line.toLowerCase().startsWith(":s")) {
+                    isCopy = !isCopy;
+                    System.out.println(ConsoleColors.GREEN+"> "+(isCopy ? "enabled" : "disabled")+" auto result copy");
+                }
                 else if(line.toLowerCase().startsWith(":c")) {
                     Constant cons = new Constant(line.substring(2));
                     if(!math.constants().containsKey(cons.getConstantName())) {
@@ -96,11 +102,13 @@ public class ModuleMath implements Module {
                     math.functions().values().forEach(expression::addDefinitions);
                     math.constants().values().forEach(expression::addDefinitions);
                     expression.enableImpliedMultiplicationMode();
-                    if(verbose) expression.setVerboseMode();
-                    System.out.println(ConsoleColors.GREEN+"> "+expression.calculate());
+                    if(isVerbose) expression.setVerboseMode();
+                    Object obj = expression.calculate();
+                    copy(obj.toString());
+                    System.out.println(ConsoleColors.GREEN+"> "+obj.toString());
                 }else if(line.toLowerCase().startsWith(":v")){
-                    verbose = !verbose;
-                    System.out.println(ConsoleColors.GREEN+"> "+(verbose ? "enabled" : "disabled")+" calculation documentation");
+                    isVerbose = !isVerbose;
+                    System.out.println(ConsoleColors.GREEN+"> "+(isVerbose ? "enabled" : "disabled")+" calculation documentation");
                 }else{
                     if(line.equals(":q")) {
                         math.functions().clear();
@@ -119,4 +127,10 @@ public class ModuleMath implements Module {
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Done with math!");
         System.out.println();
     }
+
+    public void copy(String result) {
+        StringSelection selection = new StringSelection(result);
+        Toolkit.getDefaultToolkit().getSystemClipboard().setContents(selection, selection);
+    }
+
 }

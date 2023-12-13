@@ -53,6 +53,9 @@ public class ConsoleTools {
         String s = "";
         try {
             while((s = input.nextLine()) != null) {
+                if(s.length()==0) {
+                    continue;
+                }
                 listen(s);
             }
         } catch(Exception ex) {

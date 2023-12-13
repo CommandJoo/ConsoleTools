@@ -31,10 +31,10 @@ public class ModuleMath implements Module {
         boolean isMath = true, isVerbose = false, isCopy = false;
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"You're now in Math-Mode!");
         System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
-        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":f Function\" to write math.functions()");
+        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":f Function\" to write functions");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":d Function\" to write get a quick derivative function named functionname+\"d\"");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":s\" to save the result to clipboard automatically");
-        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":c Const\" to write math.constants()");
+        System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":c Const\" to write constants");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":e Expression\" to evaluate expressions");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":v\" to enable/disable calculating documentation");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Use the command \":q\" to quit");

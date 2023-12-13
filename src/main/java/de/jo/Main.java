@@ -18,14 +18,14 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-        if(System.console() == null) { //RUN AS INSTALLER
-        //TODO make it close itself and then launch a bat file that copys the jar to another directory
-        String jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
-                .toURI()).getPath();
-        System.out.println(jarFile);
-            Files.copy(Paths.get(jarFile), new FileOutputStream("C:/Coding/test.jar"));
-            //JOptionPane.showMessageDialog(null, "Successfully Installed");
-        }
+//        if(System.console() == null) { //RUN AS INSTALLER
+//        //TODO make it close itself and then launch a bat file that copys the jar to another directory
+//        String jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()
+//                .toURI()).getPath();
+//        System.out.println(jarFile);
+//            Files.copy(Paths.get(jarFile), new FileOutputStream("C:/Coding/test.jar"));
+//            //JOptionPane.showMessageDialog(null, "Successfully Installed");
+//        }
         BasicConfigurator.configure();
         License.iConfirmNonCommercialUse("Johannes Hans");
         new ConsoleTools(args);

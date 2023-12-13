@@ -40,8 +40,8 @@ public class ModuleMath implements Module {
             Scanner scanner = new Scanner(System.in);
             String line = "";
             while((line = scanner.nextLine()) != null) {
-                if(line.isEmpty()) {
-                    System.out.println();
+                if(line.length()==0) {
+                    continue;
                 }
                 if(line.toLowerCase().startsWith(":f")) {
                     Function function = new Function(line.substring(2));

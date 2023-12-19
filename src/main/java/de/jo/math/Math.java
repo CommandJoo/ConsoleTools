@@ -10,6 +10,8 @@ public class Math {
     private final HashMap<String, Function> functions;
     private final HashMap<String, Constant> constants;
 
+    public boolean isCopy=false, isVerbose=false, isMath=true;
+
     public Math() {
         this.functions = new HashMap<>();
         this.constants = new HashMap<>();

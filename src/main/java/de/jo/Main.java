@@ -18,6 +18,8 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) throws Exception {
+
+
 //        if(System.console() == null) { //RUN AS INSTALLER
 //        //TODO make it close itself and then launch a bat file that copys the jar to another directory
 //        String jarFile = new File(Main.class.getProtectionDomain().getCodeSource().getLocation()

@@ -5,14 +5,18 @@ import de.jo.modules.Module;
 import de.jo.modules.ModuleManager;
 import de.jo.modules.impl.other.ModuleHelp;
 import de.jo.options.Options;
-import de.jo.util.ConsoleColors;
-import de.jo.util.Files;
-import de.jo.util.Strings;
+import de.jo.util.*;
 import joptsimple.OptionSet;
 
+import java.awt.*;
+import java.awt.event.AWTEventListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.File;
+import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 

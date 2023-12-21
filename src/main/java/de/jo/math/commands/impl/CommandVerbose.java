@@ -12,5 +12,6 @@ public class CommandVerbose implements Command {
     public void run(Math math, String... args) throws Exception {
         math.isVerbose = !math.isVerbose;
         System.out.println(ConsoleColors.GREEN+"> "+(math.isVerbose ? "enabled" : "disabled")+" verbose mode for calculation path");
+//        System.out.print("\033[A\033[A\033[A");
     }
 }

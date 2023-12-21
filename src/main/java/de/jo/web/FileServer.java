@@ -3,7 +3,7 @@ package de.jo.web;
 import com.sun.net.httpserver.HttpExchange;
 import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
-import de.jo.util.ConsoleColors;
+import de.jo.util.console.ConsoleColors;
 import de.jo.util.Strings;
 
 import java.io.File;
@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.nio.file.Files;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
 

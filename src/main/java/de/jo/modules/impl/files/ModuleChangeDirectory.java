@@ -3,7 +3,7 @@ package de.jo.modules.impl.files;
 import de.jo.ConsoleTools;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
-import de.jo.util.ConsoleColors;
+import de.jo.util.console.ConsoleColors;
 import de.jo.util.Strings;
 
 import java.io.File;

@@ -1,8 +1,8 @@
 package de.jo.util;
 
-import com.fasterxml.jackson.core.JsonGenerationException;
 import com.fasterxml.jackson.core.JsonGenerator;
 import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
+import de.jo.util.console.ConsoleColors;
 
 import java.io.IOException;
 

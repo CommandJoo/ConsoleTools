@@ -2,7 +2,7 @@ package de.jo.modules.impl.url;
 
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
-import de.jo.util.ConsoleColors;
+import de.jo.util.console.ConsoleColors;
 import de.jo.util.Files;
 import de.jo.util.Strings;
 import de.jo.web.FileServer;

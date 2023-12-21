@@ -1,19 +1,15 @@
 package de.jo;
 
-import Jwiki.Jwiki;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleManager;
 import de.jo.modules.impl.other.ModuleHelp;
 import de.jo.options.Options;
 import de.jo.util.*;
+import de.jo.util.console.ConsoleCodes;
+import de.jo.util.console.ConsoleColors;
 import joptsimple.OptionSet;
 
-import java.awt.*;
-import java.awt.event.AWTEventListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.io.File;
-import java.io.IOException;
 import java.io.PrintStream;
 import java.util.*;
 import java.util.List;
@@ -43,6 +39,8 @@ public class ConsoleTools {
         this.consoleStyle();
 
         OptionSet ops = options.build(args);
+
+
         ops.nonOptionArguments().forEach(arg -> {
             if(arg.toString().equals("help") || arg.toString().equals("h") || arg.toString().equals("?")) {
                 try {
@@ -69,12 +67,13 @@ public class ConsoleTools {
 
 
     public void logo() {
+        System.out.println(ConsoleCodes.RESET_CONSOLE);
         boolean b = false;
         for(String s : Files.sysLines("logo.txt")) {
             System.out.println((b ? ConsoleColors.YELLOW : ConsoleColors.YELLOW_BRIGHT)+ConsoleColors.BLACK_BACKGROUND+s+ConsoleColors.RESET);
             b = !b;
         }
-        ConsoleColors.reset();
+        System.out.println(ConsoleColors.RESET);
         System.out.println("\n\n\n\n\n\n\n\n\n\n\n\n");
     }
 
@@ -110,7 +109,7 @@ public class ConsoleTools {
             }
         }else{
             System.out.println(ConsoleColors.RED_BRIGHT+"Module \""+mod+"\" not found!");
-            ConsoleColors.reset();
+            System.out.println(ConsoleColors.RESET);
         }
     }
 

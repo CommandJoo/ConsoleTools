@@ -7,13 +7,13 @@ import com.fasterxml.jackson.databind.ObjectWriter;
 import com.google.common.hash.Hashing;
 import de.jo.modules.Module;
 import de.jo.modules.impl.other.ModuleHelp;
+import de.jo.util.console.ConsoleColors;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -37,7 +37,7 @@ public class Strings {
 
     public static void error(String string) {
         System.out.println(ConsoleColors.RED+"> "+string);
-        ConsoleColors.reset();
+        System.out.println(ConsoleColors.RESET);
     }
 
     public static void moduleError(Module module, int line) {

@@ -3,10 +3,8 @@ package de.jo.modules.impl.url;
 import Jwiki.Jwiki;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
-import de.jo.util.ConsoleColors;
+import de.jo.util.console.ConsoleColors;
 import de.jo.util.Strings;
-
-import java.awt.color.ColorSpace;
 
 /**
  * @author Johannes Hans 31.10.2023

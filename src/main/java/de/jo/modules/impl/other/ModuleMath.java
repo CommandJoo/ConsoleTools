@@ -5,18 +5,11 @@ import de.jo.math.commands.Command;
 import de.jo.math.commands.CommandManager;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
-import de.jo.util.ConsoleColors;
+import de.jo.util.console.ConsoleColors;
 import de.jo.util.Strings;
-import org.mariuszgromada.math.mxparser.*;
 
-import java.awt.*;
-import java.awt.datatransfer.StringSelection;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 /**
  * @author Johannes Hans 05.12.2023
@@ -81,7 +74,7 @@ public class ModuleMath implements Module {
             }
         }else{
             System.out.println(ConsoleColors.RED_BRIGHT+"Command \""+cmd+"\" not found!");
-            ConsoleColors.reset();
+            System.out.println(ConsoleColors.RESET);
         }
     }
 

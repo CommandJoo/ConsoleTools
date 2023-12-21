@@ -54,7 +54,7 @@ public class Files {
             }
             Writer writer = new BufferedWriter(new OutputStreamWriter(java.nio.file.Files.newOutputStream(file.toPath()), StandardCharsets.UTF_8));
             for(String s : lines) {
-                writer.write(s);
+                writer.write(s.endsWith("\n") ? s : s+"\n");
             }
             writer.close();
         } catch(Exception ex) {

@@ -14,7 +14,7 @@
 |                                                                                                                     |
 |                                                                                                                     |
 |                                   ConsoleTools    by    Johannes Hans    @CommandJoo                                |
-|                                                Version 1.0.7 - 21.12.23                                             |
+|                                                Version 1.0.8 - 24.12.23                                             |
 |                                       https://github.com/CommandJoo/ConsoleTools                                    |
 |                                            to   get   started   type   "?"                                          |
 |                                                                                                                     |

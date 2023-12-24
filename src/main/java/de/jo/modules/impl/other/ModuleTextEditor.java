@@ -130,6 +130,7 @@ public class ModuleTextEditor implements Module {
             console.write();
             if(!running) break;
         }
+        RawConsoleInput.resetConsoleMode();
 
         try {
             ConsoleTools.instance().logo();

@@ -7,6 +7,7 @@ import org.mariuszgromada.math.mxparser.Tutorial;
 import javax.swing.*;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.PrintStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -18,7 +19,6 @@ import java.nio.file.Paths;
 public class Main {
 
     public static void main(String[] args) throws Exception {
-
 
 //        if(System.console() == null) { //RUN AS INSTALLER
 //        //TODO make it close itself and then launch a bat file that copys the jar to another directory

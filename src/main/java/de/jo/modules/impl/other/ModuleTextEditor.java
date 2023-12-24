@@ -1,111 +1,37 @@
 package de.jo.modules.impl.other;
 
-import com.google.common.base.Charsets;
 import de.jo.ConsoleTools;
 import de.jo.modules.Module;
 import de.jo.modules.ModuleInfo;
-import de.jo.util.Files;
+import de.jo.util.ConsoleTextEditor;
 import de.jo.util.RawConsoleInput;
-import de.jo.util.Strings;
-import de.jo.util.console.ConsoleCodes;
 import de.jo.util.console.ConsoleColors;
 
-import javax.swing.*;
 import java.io.File;
-import java.util.ArrayList;
-import java.util.LinkedList;
+import java.nio.charset.Charset;
 
 /**
  * @author Johannes Hans 21.12.2023
  * @Project ConsoleTools
  */
-@ModuleInfo(name = "edit", description = "Opens a text editor")
+@ModuleInfo(name = "edit", description = "Opens a text editor", syntax = "<File>")
 public class ModuleTextEditor implements Module {
 
-    public class Console {
-        public ArrayList<String> lines;
-        public int lastKey = 0;
-        public String error = "";
-        public int cursorX = 0, cursorY = 0;
-        public int viewY = 0;
-
-        public Console() {
-            lines = new ArrayList<>();
-            lines.add("");
-        }
-
-        public File file = new File("D:/edit.txt");
-
-        public void print() {
-            System.out.print(ConsoleCodes.RESET_CONSOLE);
-            lines = new ArrayList<>(Files.lines(file));
-
-
-
-            String text = "CURSOR POSITION: "+(cursorX+1)+":"+(cursorY+1)+", LINES: "+lines.size()+", LAST KEY: "+lastKey+""+(error.isEmpty() ? "" : ", ERROR: "+error);
-            System.out.println(Strings.repeat(text.length(), "_"));
-
-
-            ConsoleColors.ColorBuilder lineNumberBuilder = new ConsoleColors.ColorBuilder("");
-            lineNumberBuilder.style(ConsoleColors.Styling.BOLD_ON);
-            lineNumberBuilder.color(ConsoleColors.Color.YELLOW_BACKGROUND);
-            if(cursorY-viewY > 21 && viewY+42< lines.size()) viewY++;
-            if(cursorY-viewY < 21 && viewY > 0) viewY--;
-            for(int i = viewY; i < viewY+42; i++) {
-                if(i > lines.size()-1) {
-                    System.out.println(Strings.repeat((""+lines.size()).length(), "~")+":");
-                }else {
-                    System.out.print(lineNumberBuilder.build()+lineNumber(i+1));
-                    if(i == cursorY) {
-                        System.out.println(lines.get(i).substring(0, cursorX)+"_"+(cursorX < lines.get(i).length() ? lines.get(i).substring(cursorX+1) : ""));
-                    }else {
-                        System.out.println(lines.get(i));
-                    }
-                }
-            }
-
-            ConsoleColors.ColorBuilder builder = new ConsoleColors.ColorBuilder(text);
-            builder.style(ConsoleColors.Styling.BOLD_ON, ConsoleColors.Styling.UNDERLINE_ON);
-            builder.color(ConsoleColors.Color.YELLOW);
-            System.out.println(Strings.repeat(text.length(), "_"));
-            System.out.println(builder.build());
-        }
-
-        public void write() {
-            Files.write(lines, file);
-        }
-
-        public String lineNumber(int i) {
-            String lineNumber = ""+i;
-            String longestLineNumber = ""+lines.size();
-            //1   :
-            //2   :
-            //3   :
-            //..  :
-            //... :
-            //1034:
-            return lineNumber+Strings.repeat(longestLineNumber.length()-lineNumber.length(), " ")+": ";
-        }
-
-    }
-
-
-    public Console console;
+    public ConsoleTextEditor console;
     public boolean running=true;
 
     public ModuleTextEditor() {
-        this.console = new Console();
+        this.console = new ConsoleTextEditor();
     }
-
-    public File write = new File("D:/edit.txt");
 
     @Override
     public void run(String... args) throws Exception {
+        this.console.file = new File(args[0]);
         System.out.print("\033c");
         while(running) {
             console.print();
             int key = RawConsoleInput.read(true);
-
+            String character = ""+(char)key;
 
             String currentLine = console.lines.isEmpty() ? " " : console.lines.get(console.cursorY);
             String infront = currentLine.substring(0, console.cursorX), after = currentLine.substring(console.cursorX);
@@ -182,17 +108,21 @@ public class ModuleTextEditor implements Module {
                     console.cursorX = (Math.max(infront.lastIndexOf(" "), 0));
                     break;
                 case 13://enter
-                    console.lines.set(console.cursorY, infront);
-                    console.cursorY+=1;
-                    console.lines.add(console.cursorY, after);
-                    console.cursorX = 0;
+                    if(!console.lines.isEmpty()) {
+                        console.lines.set(console.cursorY, infront);
+                        console.cursorY+=1;
+                        console.lines.add(console.cursorY, after);
+                        console.cursorX = 0;
+                    }else {
+                        console.lines.add("");
+                    }
                     break;
                 default://add character
-                   if(key < 500) {
-                       console.lines.set(console.cursorY, infront+((char)key)+after);
+                   if(Charset.forName("US-ASCII").newEncoder().canEncode(character)) {
+                       console.lines.set(console.cursorY, infront+(character)+after);
                        console.cursorX += 1;
                    }else {
-                        console.error = "Could not display key: "+key;
+                        console.error = "Could not display: "+character;
                    }
                     break;
             }
@@ -200,8 +130,14 @@ public class ModuleTextEditor implements Module {
             console.write();
             if(!running) break;
         }
-        ConsoleTools.instance().logo();
+
+        try {
+            ConsoleTools.instance().logo();
+        } catch(Exception ex) {
+
+        }
         System.out.println(ConsoleColors.YELLOW_BRIGHT+"---------------------------------");
         System.out.println(ConsoleColors.YELLOW+"> "+ConsoleColors.YELLOW_BRIGHT+"Done with editing files!");
     }
+
 }

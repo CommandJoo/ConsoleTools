@@ -82,23 +82,22 @@ public class ConsoleColors {
         public ColorBuilder color(Color... colors) {
             for(Color color : colors) {
                 if(!this.colors.contains(color.code())) this.colors.add(color.code());
-            }
+            };
             return this;
         }
         
         public String build() {
-            String text = CONTROL;
-            if(!styles.isEmpty()) {
-                for(int i = 0; i < styles.size(); i++) {
-                    text+=(i == 0 ? "" : ";") + styles.get(i);
-                }
+            StringBuilder text = new StringBuilder(CONTROL);
+            for(int i = 0; i < colors.size(); i++) {
+                text.append(colors.get(i));
+                if(i < colors.size()-1) text.append(";");
             }
-            if(!colors.isEmpty()) {
-                for(int i = 0; i < colors.size(); i++) {
-                    text+=(i == 0 ? "" : ";") + colors.get(i);
-                }
+            if(!styles.isEmpty()) text.append(";");
+            for(int i = 0; i < styles.size(); i++) {
+                text.append(styles.get(i));
+                if(i < styles.size()-1) text.append(";");
             }
-            return text+=COLOR_END+this.text();
+            return text.append(COLOR_END).append(this.text()).toString();
         }
 
     }

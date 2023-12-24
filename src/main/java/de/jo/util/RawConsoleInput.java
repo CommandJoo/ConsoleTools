@@ -240,6 +240,7 @@ public class RawConsoleInput {
     // (This method is synchronized because the charsetDecoder must only be used by a single thread at once.)
     private static synchronized int decodeCharFromBytes (byte[] inBytes, int inLen) {
         charsetDecoder.reset();
+
         charsetDecoder.onMalformedInput(CodingErrorAction.REPLACE);
         charsetDecoder.replaceWith(invalidKeyStr);
         ByteBuffer in = ByteBuffer.wrap(inBytes, 0, inLen);

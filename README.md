@@ -37,3 +37,4 @@ to get started type "?"
     Joke - prints a joke
     Summarize - prints wiki summary
     Math - use math expressions
+    Edit - Opens a Fileeditor
